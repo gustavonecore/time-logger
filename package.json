@@ -7,17 +7,15 @@
 		"doc": "doc"
 	},
 	"dependencies": {
-		"MD5": "^1.2.1",
 		"express": "^3.3.8",
 		"cors": "^2.7.1",
 		"express-myconnection": "^1.0.4",
-		"log4js": "^0.6.25",
-		"node-uuid": "^1.4.3",
-		"sequelize": "^2.1.3",
+		"sequelize": "2.1.3",
 		"mysql": "^2.5.0",
 		"supervisor": "^0.7.1",
 		"validator": "^3.40.1",
-		"jira-client":"*"
+		"unit":"*",
+		"mocha":"*"
 	},
 	"devDependencies": {},
 	"scripts": {
@@ -31,6 +29,5 @@
 		"architecture"
 	],
 	"author": "Gustavo Delgado R.",
-	"license": "ISC",
-	"homepage": "https://bitbucket.org/gustavonecore/nucleus_lo#readme"
+	"license": "ISC"
 }

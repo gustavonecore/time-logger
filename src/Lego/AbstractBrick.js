@@ -12,6 +12,7 @@ function AbstractBrick(name)
 
 AbstractBrick.prototype = {
 	name: null,
+	params: null,
 
 	fromContainer: function(services){
 		throw 'You must implement the [fromContainer] method';
@@ -24,6 +25,10 @@ AbstractBrick.prototype = {
 	},
 	exe: function(options){
 		throw 'You must implement the [exec] method';
+	},
+	setParams: function(params)
+	{
+		this.params = params;
 	}
 };
 

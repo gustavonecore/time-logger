@@ -3,16 +3,16 @@
 var fs = require("fs");
 var path = require("path");
 var Sequelize = require("sequelize");
-var config = require('config');
+var config = require(APPROOT + 'config/settings');
 
-var env = config.get('enviroment');
-var database = config.get('database');
-var sequelize = new Sequelize(database[env].name, database[env].user, database[env].password,
+var database = config.database;
+var sequelize = new Sequelize(database.name, database.user, database.password,
 {
-	host: database[env].host,
+	host: database.host,
 	dialect: 'mysql',
 	omitNull: true,
 	define: {
+		freezeTableName: true,
 		timestamps: false,
 	}
 });

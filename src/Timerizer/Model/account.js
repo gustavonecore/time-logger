@@ -2,7 +2,7 @@
 
 module.exports = function(sequelize, DataTypes)
 {
-	return sequelize.define("user",
+	return sequelize.define("account",
 	{
 		id: DataTypes.INTEGER,
 		uuid: DataTypes.STRING,

@@ -2,6 +2,7 @@ var BrickNotFoundError = require("./Error/BrickNotFoundError");
 var InvalidCallbackError = require("./Error/InvalidCallbackError");
 
 var LegoBricks = {};
+var CacheBricks = {};
 
 function Builder()
 {
@@ -17,21 +18,11 @@ Builder.prototype = {
 		this.container = container;
 	},
 
-	/**
-	 * Shortcut to call command execution.
-	 *
-	 * @param string $name     Command Name
-	 * @param array  $params   Params needed by the command
-	 *
-	 * @return callback
-	 */
-
 	process: function(name, params, next)
 	{
 		if (!next)
 		{
 			throw new InvalidCallbackError();
-			return;
 		}
 
 		name += 'Brick';
@@ -40,7 +31,20 @@ Builder.prototype = {
 
 		if (LegoBricks[brick])
 		{
-			var brickInstance = LegoBricks[brick].fromContainer(this.container);
+			var brickInstance = null;
+
+			if (CacheBricks[brick])
+			{
+				brickInstance = CacheBricks[brick];
+				console.log('Get from cache Brick: ' + brick);
+			}
+			else
+			{
+				console.log('Brick creating: ' + brick);
+				brickInstance = LegoBricks[brick].fromContainer(this.container);
+				CacheBricks[brick] = brickInstance;
+			}
+
 			brickInstance.exe(params, function(err, response)
 			{
 				if (err)
@@ -61,7 +65,13 @@ Builder.prototype = {
 	}
 }
 
-Builder.registerBrick = function(name, brickClass){
+Builder.registerBrick = function(name, brickClass)
+{
+	if (!brickClass.fromContainer)
+	{
+		throw 'You must define the static factory method [fromContainer]';
+	}
+
 	LegoBricks[name] = brickClass;
 }
 

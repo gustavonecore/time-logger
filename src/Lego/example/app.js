@@ -19,7 +19,6 @@ var container = {
 
 builder.setContainer(container);
 
-/*
 // Good call
 builder.process('sample', {
 	data1:1
@@ -52,7 +51,6 @@ builder.process('sample', {
 	data1:1,
 	data2:2,
 	data3:3});
-*/
 // Good call
 builder.process('sampleAsync', {
 	data1:1

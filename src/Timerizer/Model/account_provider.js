@@ -2,10 +2,10 @@
 
 module.exports = function(sequelize, DataTypes)
 {
-	return sequelize.define("user_provider",
+	return sequelize.define("account_provider",
 	{
 		id: DataTypes.INTEGER,
-		user_id: DataTypes.INTEGER,
+		account_id: DataTypes.INTEGER,
 		provider_id: DataTypes.INTEGER,
 		username: DataTypes.STRING,
 		password: DataTypes.STRING,

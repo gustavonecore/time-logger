@@ -28,10 +28,19 @@ SampleAsyncBrick.prototype.exe = function(params, next) {
 	{
 		if (err)
 		{
-			self.builder.process('sample', {
-				data1:1,
-				data2:2,
-				data3:3});
+			try
+			{
+				self.builder.process('sample', {
+					data1:1,
+					data2:2,
+					data3:3});
+			}
+			catch(e)
+			{
+				console.log('Exception ', e)
+				next(e);
+				return;
+			}
 
 			next(err);
 			return;
