@@ -1,33 +1,41 @@
 {
-	"name": "uptimer",
-	"version": "1.0.0",
-	"description": "Simple time logger with Service providers integration like Bitbucket/JIRA",
-	"main": "app.js",
-	"directories": {
-		"doc": "doc"
-	},
-	"dependencies": {
-		"express": "^3.3.8",
-		"cors": "^2.7.1",
-		"express-myconnection": "^1.0.4",
-		"sequelize": "2.1.3",
-		"mysql": "^2.5.0",
-		"supervisor": "^0.7.1",
-		"validator": "^3.40.1",
-		"unit":"*",
-		"mocha":"*"
-	},
-	"devDependencies": {},
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
-	"keywords": [
-		"Restfull",
-		"nodejs",
-		"rest",
-		"webservice",
-		"architecture"
-	],
-	"author": "Gustavo Delgado R.",
-	"license": "ISC"
+  "name": "timerizer",
+  "version": "1.0.0",
+  "description": "Simple time logger with Service providers integration like Bitbucket/JIRA",
+  "main": "app.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "express": "^3.3.8",
+    "cors": "^2.7.1",
+    "express-myconnection": "^1.0.4",
+    "sequelize": "2.1.3",
+    "mysql": "^2.5.0",
+    "supervisor": "^0.7.1",
+    "validator": "^3.40.1",
+    "unit": "*",
+    "mocha": "*"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Restfull",
+    "nodejs",
+    "rest",
+    "webservice",
+    "architecture"
+  ],
+  "author": "Gustavo Delgado R.",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gustavonecore/time-logger.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gustavonecore/time-logger/issues"
+  },
+  "homepage": "https://github.com/gustavonecore/time-logger#readme"
 }

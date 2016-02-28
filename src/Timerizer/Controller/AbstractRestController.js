@@ -67,7 +67,7 @@ AbstractRestController.prototype = {
 	{
 		if (detail)
 		{
-			console.log(detail);
+			console.log(detail.stack ? detail.stack : detail);
 		}
 
 		if (error instanceof ApiException)

@@ -1,7 +1,5 @@
 var AbstractRestController = require(APPROOT + "src/Timerizer/Controller/AbstractRestController");
 var Filter = require(APPROOT + "src/Libs/Filter/Filter");
-var bitbucket = require('bitbucket-api');
-var JiraClient = require('jira-connector');
 
 var ProviderController  = function(options)
 {
@@ -74,7 +72,7 @@ ProviderController.prototype.postResource = function(req, res)
 	var self = this;
 
 	var input = new Filter(req.body, {
-		username: 'string',
+		//username: 'string',
 		password: 'string'
 	});
 

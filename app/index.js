@@ -27,6 +27,10 @@ expressApp.use(function(err, req, res, next) {
 	res.status(500).send('Something broke!');
 });
 
+process.on('uncaughtException', function(err){
+  console.log("Caught exception: ${err}");
+});
+
 models
 .sequelize
 .sync({syncOnAssociation: false, force: false})

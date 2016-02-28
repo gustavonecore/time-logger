@@ -16,23 +16,6 @@ function Filter(Request, Fields)
 	this.fields = Fields;
 	this.sanitize = null;
 	this.required = null;
-
-	// Simple stdout log if no one is configured
-	Log = {
-		error: function(msg)
-		{
-			console.log('ERROR: ' + msg)
-		},
-		info: function(msg)
-		{
-			console.log('INFO: ' + msg)
-		},
-		warn: function(msg)
-		{
-			console.log('WARN: ' + msg)
-		}
-	};
-
 	this.inflector = new CommandInflector();
 }
 
@@ -55,12 +38,6 @@ Filter.prototype.requiredFields = function(requiredFields)
 	this.required = requiredFields;
 }
 
-// TODO Deprecated
-Filter.prototype.setLogger = function(logger)
-{
-	//Log = logger;
-}
-
 Filter.prototype.has = function(field)
 {
 	return this.request[field] ? true : false;
@@ -68,25 +45,16 @@ Filter.prototype.has = function(field)
 
 Filter.prototype.getValue = function(field)
 {
-	try
+	if (typeof this.fields[field] === 'undefined')
 	{
-		if (typeof this.fields[field] === 'undefined')
-		{
-			throw 'You must define the field: ' + field + ' in the filter';
-		}
-
-		var type = this.fields[field];
-		var value = this.request[field];
-
-		var sanitizer = this.inflector.getSanitizer(type);
-		this.request[field] = sanitizer(value);
+		throw 'You must define the field: ' + field + ' in the filter';
 	}
-	catch(e)
-	{
-		Log.error('Exception for getValue');
-		Log.error(e);
-		throw e;
-	}
+
+	var type = this.fields[field];
+	var value = this.request[field];
+
+	var sanitizer = this.inflector.getSanitizer(type);
+	this.request[field] = sanitizer(value);
 
 	return this.request[field];
 }
